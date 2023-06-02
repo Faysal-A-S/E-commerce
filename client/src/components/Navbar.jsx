@@ -6,10 +6,24 @@ import {
   faAngleDown,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../features/User/UserSlice";
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.authenticatedUser);
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(logoutUser());
+  };
   return (
     <nav
-      className="navbar navbar-expand-lg  navbar-dark "
+      className="navbar navbar-expand-lg  navbar-dark sticky-top "
       style={{ backgroundColor: "#343a40" }}
     >
       <div className="container-fluid" style={{ color: "red" }}>
@@ -53,14 +67,41 @@ const Navbar = () => {
             </div>
 
             <li className="nav-item mx-2">
-              <button
-                className="btn  ms-5 fw-bold"
-                style={{ backgroundColor: "#ffe140" }}
-              >
-                Login &nbsp; <FontAwesomeIcon icon={faRightToBracket} />
-              </button>
+              {user.name ? (
+                <div className="dropdown ms-5">
+                  <a
+                    className="btn btn-secondary dropdown-toggle fw-bold"
+                    href="/"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    {user.name.toUpperCase()}
+                  </a>
+
+                  <ul
+                    className="dropdown-menu dropdown-menu-dark"
+                    aria-labelledby="dropdownMenuLink "
+                  >
+                    <li>
+                      <button className="dropdown-item" onClick={handleLogout}>
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <button
+                  onClick={handleLogin}
+                  className="btn  ms-5 fw-bold"
+                  style={{ backgroundColor: "#ffe140" }}
+                >
+                  Login &nbsp; <FontAwesomeIcon icon={faRightToBracket} />
+                </button>
+              )}
             </li>
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown ms-2">
               <a
                 className="nav-link "
                 href="/"
@@ -71,7 +112,10 @@ const Navbar = () => {
               >
                 More <FontAwesomeIcon icon={faAngleDown} />
               </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul
+                className="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="navbarDropdown"
+              >
                 <li>
                   <a className="dropdown-item" href="/">
                     Action
@@ -94,10 +138,10 @@ const Navbar = () => {
             </li>
           </ul>
           <button
-            className="btn  col-lg-1 col-md-1 me-5 fw-bold"
+            className="btn  col-lg-1 col-md-1 me-5 fw-bold "
             style={{ backgroundColor: "#ffe140" }}
           >
-            Cart &nbsp; <FontAwesomeIcon icon={faCartShopping} />
+            Cart &nbsp; &nbsp; <FontAwesomeIcon icon={faCartShopping} />
           </button>
         </div>
       </div>

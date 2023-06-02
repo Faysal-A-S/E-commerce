@@ -30,12 +30,12 @@ const AddCarousel = () => {
       slidesToSlide={1}
     >
       <img
-        src="https://static-prod.adweek.com/wp-content/uploads/2019/12/hulu-cheez-it-ad-CONTENT-2019.jpg"
+        src="https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg?q=50"
         alt="ad"
         className="ads"
       />
       <img
-        src="https://e1.pxfuel.com/desktop-wallpaper/57/759/desktop-wallpaper-burger-king-hamburger-cheeseburger-big-mac-whopper.jpg"
+        src="https://rukminim1.flixcart.com/flap/3376/560/image/57267a180af306fe.jpg?q=50"
         alt="ad"
         className="ads"
       />
