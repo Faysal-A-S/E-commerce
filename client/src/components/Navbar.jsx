@@ -6,7 +6,7 @@ import {
   faAngleDown,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../features/User/UserSlice";
 const Navbar = () => {
@@ -27,13 +27,13 @@ const Navbar = () => {
       style={{ backgroundColor: "#343a40" }}
     >
       <div className="container-fluid" style={{ color: "red" }}>
-        <a
+        <Link
           className="navbar-brand  mx-5 ps-5 fs-2 fw-bold"
-          href="/"
-          style={{ color: "#b39c25" }}
+          to={"/"}
+          style={{ color: "#b39c25", textDecoration: "none" }}
         >
           F-Commerce
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

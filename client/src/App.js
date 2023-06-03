@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { authenticateUser } from "./features/User/UserSlice";
 import { useDispatch } from "react-redux";
+import ProductDetails from "./pages/ProductDetails";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,6 +23,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
