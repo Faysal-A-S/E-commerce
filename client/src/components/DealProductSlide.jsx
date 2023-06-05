@@ -23,12 +23,12 @@ const DealProductSlide = () => {
 
   return (
     <div className="mt-3">
-      <p
+      <div
         className="fw-bolder my-0 p-3 fs-4 "
         style={{ color: "black", backgroundColor: "white" }}
       >
         Deals of the Day: <hr />
-      </p>
+      </div>
 
       <Carousel
         responsive={responsive}

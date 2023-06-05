@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import { authenticateUser } from "./features/User/UserSlice";
 import { useDispatch } from "react-redux";
 import ProductDetails from "./pages/ProductDetails";
+import Search from "./pages/Search";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/product/search/:title" element={<Search />} />
       </Routes>
     </Router>
   );

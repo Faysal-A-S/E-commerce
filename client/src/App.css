@@ -16,11 +16,7 @@ hr {
 }
 .product-img {
   height: 200px;
-  width: 99%;
-  padding-left: 0%;
-  padding-right: 0%;
-  margin-left: 0%;
-  margin-right: 0%;
+  width: auto;
 }
 .product-carousel {
   background-color: #c9c7c7;
@@ -30,6 +26,36 @@ hr {
 
   color: rgb(49, 48, 48);
 }
+.product-leftContainer {
+  min-width: 40%;
+  padding: 40px 0 0 80px;
+}
+.product-rightContainer {
+  margin-top: 50px;
+}
+.product-leftContainer-Img {
+  background-color: white;
+  padding: 15px 20px;
+  border: 1px solid #f0f0f0;
+  width: 95%;
+}
+
+.product-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 46%;
+  height: 50px;
+  border-radius: 2px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.badge {
+  margin-right: 10px;
+}
+
+.product-card {
+}
+
 @media (min-width: 768px) {
   .gradient-form {
     height: 100vh !important;

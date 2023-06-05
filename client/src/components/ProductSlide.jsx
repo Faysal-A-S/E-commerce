@@ -24,12 +24,12 @@ const ProductSlide = ({ lineText }) => {
 
   return (
     <div className="mt-3">
-      <p
+      <div
         className="fw-bolder my-0 p-3 fs-4 "
         style={{ color: "black", backgroundColor: "white" }}
       >
         {lineText} <hr />
-      </p>
+      </div>
 
       <Carousel
         responsive={responsive}
