@@ -4,9 +4,9 @@ import { useRegisterMutation } from "../features/User/UserApi";
 import { authenticateUser } from "../features/User/UserSlice";
 import { useDispatch } from "react-redux";
 
-const Register = () => {
+const AdminRegister = () => {
   const handleLogin = () => {
-    navigate("/login");
+    navigate("/admin/login");
   };
 
   const navigate = useNavigate();
@@ -16,12 +16,12 @@ const Register = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState(null);
-  let userType = "user";
+  let userType = "admin";
   const handleSubmit = async (e) => {
     e.preventDefault();
     await register({ name, email, password, userType });
   };
-  console.log(error?.data?.message);
+
   useEffect(() => {
     if (error?.data) {
       setFormError(error.data.message);
@@ -49,7 +49,7 @@ const Register = () => {
                     </div>
 
                     <form onSubmit={handleSubmit}>
-                      <p>Register to your account</p>
+                      <p>Register to your account as ADMIN</p>
 
                       <div className="form-outline mb-4">
                         <input
@@ -126,4 +126,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default AdminRegister;

@@ -30,6 +30,9 @@ hr {
   min-width: 40%;
   padding: 40px 0 0 80px;
 }
+.cart-header {
+  padding: 15px 24px;
+}
 .product-rightContainer {
   margin-top: 50px;
 }
@@ -38,6 +41,31 @@ hr {
   padding: 15px 20px;
   border: 1px solid #f0f0f0;
   width: 95%;
+}
+.remove {
+  color: rgb(235, 101, 101);
+}
+.grp-button {
+  width: 25%;
+  margin: 5px;
+  font-size: smaller;
+  color: white;
+  background-color: rgb(0, 0, 0);
+}
+.place-order {
+  padding: 16px 22px;
+  box-shadow: 0 -2px 10px 0 rgba(192, 184, 184, 0.1);
+}
+.price {
+  float: right;
+}
+.place-order-button {
+  background-color: rgb(255, 225, 64);
+  display: flex;
+  margin-left: auto;
+}
+.grp-button:hover {
+  font-weight: bold;
 }
 
 .product-button {
@@ -51,9 +79,6 @@ hr {
 }
 .badge {
   margin-right: 10px;
-}
-
-.product-card {
 }
 
 @media (min-width: 768px) {

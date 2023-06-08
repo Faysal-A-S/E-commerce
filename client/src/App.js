@@ -11,6 +11,10 @@ import { authenticateUser } from "./features/User/UserSlice";
 import { useDispatch } from "react-redux";
 import ProductDetails from "./pages/ProductDetails";
 import Search from "./pages/Search";
+import Cart from "./pages/Cart";
+import PublicRoute from "./utils/PublicRoute";
+import AdminRegister from "./pages/AdminRegister";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,9 +29,45 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/admin/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/admin/register"
+          element={
+            <PublicRoute>
+              <AdminRegister />
+            </PublicRoute>
+          }
+        />
+
         <Route path="/product/search/:title" element={<Search />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
   );

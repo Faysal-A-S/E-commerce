@@ -1,37 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRegisterMutation } from "../features/User/UserApi";
-import { authenticateUser } from "../features/User/UserSlice";
+import { useLoginMutation } from "../features/User/UserApi";
 import { useDispatch } from "react-redux";
-
-const Register = () => {
-  const handleLogin = () => {
-    navigate("/login");
-  };
-
+import { authenticateUser } from "../features/User/UserSlice";
+const AdminLogin = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [register, { isLoading, data, error }] = useRegisterMutation();
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [login, { isLoading, data, error }] = useLoginMutation();
   const [formError, setFormError] = useState(null);
-  let userType = "user";
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await register({ name, email, password, userType });
+  console.log(data);
+  const handleRegister = () => {
+    navigate("/register");
   };
-  console.log(error?.data?.message);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (error?.data) {
       setFormError(error.data.message);
     }
+
     if (data?.Token) {
       localStorage.setItem("user", JSON.stringify({ ...data }));
-      dispatch(authenticateUser({ ...data }));
       navigate("/");
+      dispatch(authenticateUser({ ...data }));
     }
   }, [error, data, dispatch, navigate]);
+  const userType = "admin";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login({
+      email,
+      password,
+      userType,
+    });
+  };
   return (
     <section
       className="h-100 gradient-form"
@@ -49,7 +51,7 @@ const Register = () => {
                     </div>
 
                     <form onSubmit={handleSubmit}>
-                      <p>Register to your account</p>
+                      <p>Please login to your account as ADMIN</p>
 
                       <div className="form-outline mb-4">
                         <input
@@ -59,16 +61,6 @@ const Register = () => {
                           placeholder="Email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                        />
-                      </div>
-                      <div className="form-outline mb-4">
-                        <input
-                          type="text"
-                          id="name"
-                          className="form-control"
-                          placeholder="name"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
                         />
                       </div>
 
@@ -89,7 +81,7 @@ const Register = () => {
                           type="submit"
                           disabled={isLoading}
                         >
-                          Register
+                          Login
                         </button>
                         {formError && (
                           <div className="p-1 m-1 text-danger">{formError}</div>
@@ -97,13 +89,13 @@ const Register = () => {
                       </div>
 
                       <div className="d-flex align-items-center justify-content-center pb-4">
-                        <p className="mb-0 me-2">Already have an account?</p>
+                        <p className="mb-0 me-2">Don't have an account?</p>
                         <button
+                          onClick={handleRegister}
                           type="button"
                           className="btn btn-outline-success"
-                          onClick={handleLogin}
                         >
-                          Login
+                          Create new
                         </button>
                       </div>
                     </form>
@@ -126,4 +118,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default AdminLogin;

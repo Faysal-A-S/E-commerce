@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../features/User/UserSlice";
 const Navbar = () => {
+  const { cartItem } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.authenticatedUser);
@@ -28,7 +29,9 @@ const Navbar = () => {
     localStorage.clear();
     dispatch(logoutUser());
   };
-
+  const handleCart = () => {
+    navigate("/cart");
+  };
   return (
     <nav
       className="navbar navbar-expand-lg  navbar-dark sticky-top d-flex flex-column "
@@ -159,8 +162,22 @@ const Navbar = () => {
           <button
             className="btn  col-lg-1 col-md-1 me-5 fw-bold mt-1"
             style={{ backgroundColor: "#ffe140" }}
+            onClick={handleCart}
           >
-            Cart &nbsp; &nbsp; <FontAwesomeIcon icon={faCartShopping} />
+            Cart &nbsp; <FontAwesomeIcon icon={faCartShopping} />
+            <span
+              style={{
+                borderRadius: "5px",
+                padding: "1px",
+
+                margin: "2px",
+                backgroundColor: "black",
+                color: "white",
+              }}
+            >
+              {" "}
+              {cartItem?.length}
+            </span>
           </button>
         </div>
       </div>
